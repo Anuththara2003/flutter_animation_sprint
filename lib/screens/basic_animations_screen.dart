@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/profile_card.dart';
 import '../widgets/custom_spinner.dart';
+import 'onboarding_screen.dart';
 import 'product_gallery_screen.dart';
 
 class BasicAnimationsScreen extends StatelessWidget {
@@ -61,6 +62,16 @@ class BasicAnimationsScreen extends StatelessWidget {
                 ),
               ),
               const Spacer(), // To push everything up slightly for a balanced look
+
+              const SizedBox(height: 15),
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => const OnboardingScreen()));
+                  },
+                  child: const Text("View Phase 4: Onboarding & Lottie"),
+                ),
+              ),
             ],
           ),
         ),
