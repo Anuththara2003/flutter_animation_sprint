@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/custom_spinner.dart';
 import '../widgets/profile_card.dart';
 
 class BasicAnimationsScreen extends StatelessWidget {
@@ -33,6 +34,9 @@ class BasicAnimationsScreen extends StatelessWidget {
               const Spacer(),
               const Center(child: Text("Phase 1 & 2 Demo", style: TextStyle(color: Colors.grey))),
               const SizedBox(height: 20),
+
+              const SizedBox(height: 40),
+              const Center(child: CustomSpinner()),
             ],
           ),
         ),
