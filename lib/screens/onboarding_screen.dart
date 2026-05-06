@@ -61,8 +61,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
               // Phase 4: Lottie Integration
               FadeTransition(
                 opacity: _imageOpacity,
-                child: Lottie.network(
-                  'https://assets10.lottiefiles.com/packages/lf20_rc67ruav.json',
+                child: Lottie.asset(
+                  'assets/animation/success.json',
                   height: 250,
                   repeat: true,
                 ),

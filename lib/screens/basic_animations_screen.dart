@@ -89,7 +89,7 @@ class BasicAnimationsScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                             backgroundColor: Colors.white.withOpacity(0.5),
                           ),
-                          icon: const Icon(Icons.auto_awesome, color: Colors.blue),
+                          // icon: const Icon(Icons.auto_awesome, color: Colors.blue),
                           label: const Text("Onboarding & Lottie", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.blue)),
                         ),
                       ),

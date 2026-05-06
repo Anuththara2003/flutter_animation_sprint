@@ -17,7 +17,7 @@ class AnimationSprintApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const BasicAnimationsScreen(), // අපි හැදපු screen එක මෙතනට දුන්නා
+      home: const BasicAnimationsScreen(),
     );
   }
 }
