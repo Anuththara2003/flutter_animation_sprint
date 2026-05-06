@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animation_sprint/screens/product_gallery_screen.dart';
-import '../widgets/custom_spinner.dart';
 import '../widgets/profile_card.dart';
+import '../widgets/custom_spinner.dart';
+import 'product_gallery_screen.dart';
 
 class BasicAnimationsScreen extends StatelessWidget {
   const BasicAnimationsScreen({super.key});
@@ -26,27 +26,41 @@ class BasicAnimationsScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Hello Anuththara,", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-                    Text("Welcome to Flutter Animation Sprint", style: TextStyle(fontSize: 16, color: Colors.blueGrey)),
+                    Text("Hello Anuththara,",
+                        style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                    Text("Welcome to Flutter Animation Sprint",
+                        style: TextStyle(fontSize: 16, color: Colors.blueGrey)),
                   ],
                 ),
               ),
-              const Center(child: ProfileCard()),
-              const Spacer(),
-              const Center(child: Text("Phase 1 & 2 Demo", style: TextStyle(color: Colors.grey))),
               const SizedBox(height: 20),
+              const Center(child: ProfileCard()),
 
-              const SizedBox(height: 40),
+              // Spacing before the spinner
+              const SizedBox(height: 50),
+              const Center(
+                child: Text("Phase 2: Custom Loading Spinner",
+                    style: TextStyle(fontWeight: FontWeight.w500, color: Colors.blueGrey)),
+              ),
+              const SizedBox(height: 20),
               const Center(child: CustomSpinner()),
 
-              const SizedBox(height: 30),
-              ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (c) => const ProductGalleryScreen()));
-                },
-                icon: const Icon(Icons.grid_view),
-                label: const Text("Go to Product Gallery"),
+              // Spacing before the button
+              const SizedBox(height: 50),
+              Center(
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => const ProductGalleryScreen()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                  ),
+                  icon: const Icon(Icons.grid_view),
+                  label: const Text("Go to Product Gallery"),
+                ),
               ),
+              const Spacer(), // To push everything up slightly for a balanced look
             ],
           ),
         ),
