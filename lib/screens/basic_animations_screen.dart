@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animation_sprint/screens/product_gallery_screen.dart';
 import '../widgets/custom_spinner.dart';
 import '../widgets/profile_card.dart';
 
@@ -37,6 +38,15 @@ class BasicAnimationsScreen extends StatelessWidget {
 
               const SizedBox(height: 40),
               const Center(child: CustomSpinner()),
+
+              const SizedBox(height: 30),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (c) => const ProductGalleryScreen()));
+                },
+                icon: const Icon(Icons.grid_view),
+                label: const Text("Go to Product Gallery"),
+              ),
             ],
           ),
         ),
