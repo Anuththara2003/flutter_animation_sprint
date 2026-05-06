@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final String imageTag;
-  const ProductDetailScreen({super.key, required this.imageTag});
+  final String imageUrl; // රූපයේ URL එක ලබා ගැනීමට
+
+  const ProductDetailScreen({
+    super.key,
+    required this.imageTag,
+    required this.imageUrl
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -10,29 +16,29 @@ class ProductDetailScreen extends StatelessWidget {
       appBar: AppBar(title: const Text("Product Detail")),
       body: Column(
         children: [
-          // Hero widget is used to make the image transition smooth between screens
           Hero(
             tag: imageTag,
-            child: Container(
-              height: 300,
+            child: Image.network(
+              imageUrl,
+              height: 350,
               width: double.infinity,
-              color: Colors.blue.shade100,
-              child: const Icon(Icons.shopping_bag, size: 150, color: Colors.blue),
+              fit: BoxFit.cover, // පින්තූරය සම්පූර්ණයෙන් පෙනෙන්න
             ),
           ),
+          const SizedBox(height: 20),
           const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              "Premium Product Details",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              "Premium Product Experience",
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
             ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              "This screen was reached through a Hero Animation. Notice how the image transitions and expands from the previous screen seamlessly.",
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+              "Notice how this specific image expanded smoothly from the gallery. This is the power of Flutter Hero animations!",
               textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, color: Colors.blueGrey),
             ),
           ),
         ],
