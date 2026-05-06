@@ -4,6 +4,16 @@ import 'product_detail_screen.dart';
 class ProductGalleryScreen extends StatelessWidget {
   const ProductGalleryScreen({super.key});
 
+  // පින්තූර 6ක් සඳහා placeholder links
+  final List<String> images = const [
+    'https://picsum.photos/id/1/400/400',
+    'https://picsum.photos/id/2/400/400',
+    'https://picsum.photos/id/3/400/400',
+    'https://picsum.photos/id/4/400/400',
+    'https://picsum.photos/id/5/400/400',
+    'https://picsum.photos/id/6/400/400',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,33 +22,29 @@ class ProductGalleryScreen extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12
         ),
-        itemCount: 6,
+        itemCount: images.length,
         itemBuilder: (context, index) {
           String tag = 'product_$index';
+          String url = images[index];
+
           return GestureDetector(
             onTap: () {
-
               Navigator.push(context, PageRouteBuilder(
-                  pageBuilder: (context, anim, secondaryAnim) => ProductDetailScreen(imageTag: tag),
+                  pageBuilder: (context, anim, secondaryAnim) =>
+                      ProductDetailScreen(imageTag: tag, imageUrl: url),
                   transitionsBuilder: (context, anim, secondaryAnim, child) {
-                    return SlideTransition(
-                      position: Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero).animate(anim),
-                      child: FadeTransition(opacity: anim, child: child),
-                    );
+                    return FadeTransition(opacity: anim, child: child);
                   }
               ));
             },
             child: Hero(
               tag: tag,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: const Icon(Icons.shopping_bag, size: 50, color: Colors.blue),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.network(url, fit: BoxFit.cover),
               ),
             ),
           );
