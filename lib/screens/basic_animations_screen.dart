@@ -11,6 +11,7 @@ class BasicAnimationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.infinity, // මුළු screen එකම cover වීමට
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -19,60 +20,85 @@ class BasicAnimationsScreen extends StatelessWidget {
           ),
         ),
         child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(25.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Hello Anuththara,",
-                        style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-                    Text("Welcome to Flutter Animation Sprint",
-                        style: TextStyle(fontSize: 16, color: Colors.blueGrey)),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              const Center(child: ProfileCard()),
-
-              // Spacing before the spinner
-              const SizedBox(height: 50),
-              const Center(
-                child: Text("Phase 2: Custom Loading Spinner",
-                    style: TextStyle(fontWeight: FontWeight.w500, color: Colors.blueGrey)),
-              ),
-              const SizedBox(height: 20),
-              const Center(child: CustomSpinner()),
-
-              // Spacing before the button
-              const SizedBox(height: 50),
-              Center(
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (c) => const ProductGalleryScreen()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(25.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Hello Anuththara,",
+                          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                      Text("Welcome to Flutter Animation Sprint",
+                          style: TextStyle(fontSize: 16, color: Colors.blueGrey)),
+                    ],
                   ),
-                  icon: const Icon(Icons.grid_view),
-                  label: const Text("Go to Product Gallery"),
                 ),
-              ),
-              const Spacer(), // To push everything up slightly for a balanced look
 
-              const SizedBox(height: 15),
-              Center(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (c) => const OnboardingScreen()));
-                  },
-                  child: const Text("View Phase 4: Onboarding & Lottie"),
+                const SizedBox(height: 20),
+                const Center(child: ProfileCard()),
+
+                const SizedBox(height: 40),
+                const Center(
+                  child: Text(" Custom Loading Spinner",
+                      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.blueGrey)),
                 ),
-              ),
-            ],
+                const SizedBox(height: 20),
+                const Center(child: CustomSpinner()),
+
+                const SizedBox(height: 60),
+
+                // Button Group
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: Column(
+                    children: [
+                      // First Button (Solid)
+                      SizedBox(
+                        width: double.infinity,
+                        height: 55,
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (c) => const ProductGalleryScreen()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white,
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                          ),
+                          icon: const Icon(Icons.grid_view),
+                          label: const Text("Go to Product Gallery", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // Second Button (Outlined style for distinction)
+                      SizedBox(
+                        width: double.infinity,
+                        height: 55,
+                        child: OutlinedButton.icon(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (c) => const OnboardingScreen()));
+                          },
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(color: Colors.blue, width: 2),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                            backgroundColor: Colors.white.withOpacity(0.5),
+                          ),
+                          icon: const Icon(Icons.auto_awesome, color: Colors.blue),
+                          label: const Text("Onboarding & Lottie", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.blue)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 40),
+              ],
+            ),
           ),
         ),
       ),
